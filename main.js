@@ -10,6 +10,31 @@ class Block {
     }
 
     calculateHash(){
-        return SHA256(this.index + this.previousHash + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();)
+        return SHA256(this.index + this.previousHash + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString()
     }
 }
+
+class Blockchain {
+    constructor(){
+        this.chain = [this.createGenesisBlock()];
+    }
+
+    createGenesisBlock(){
+        return new Bloxk(0, "05/10/2022", "Genesis block", 0)
+    }
+
+    getLatesBlock(){
+        return this.chain[this.chain.length-1];
+    }
+
+    addBlock(newBlock){
+        newBlock.previousHash = this.getLatesBlock().hash;
+        newBlock.hash = newBlock.calculateHash();
+        this.chain.push(newBlock);
+    }
+}
+let fesaCoin = Blockchain();
+fesaCoin.addBlock(new Block(1, "06/10/2021", {amount:4}));
+fesaCoin.addBlock(new Block(2, "07/10/2021", {amount:4}));
+
+console.log(JSON.stringify(fesaCoin, null, 4))
