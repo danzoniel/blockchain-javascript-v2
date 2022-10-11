@@ -37,4 +37,5 @@ let fesaCoin = new Blockchain();
 fesaCoin.addBlock(new Block(1, "06/10/2021", {amount:4}));
 fesaCoin.addBlock(new Block(2, "07/10/2021", {amount:4}));
 
-console.log(JSON.stringify(fesaCoin, null, 5))
+console.log(JSON.stringify(fesaCoin, null, 4))
+
