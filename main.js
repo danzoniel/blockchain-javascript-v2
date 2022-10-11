@@ -6,12 +6,12 @@ class Block {
         this.timestamp = timestamp;
         this.data = data;
         this.previousHash = previousHash;
-        this.has = this.calculateHash();
+        this.hash = this.calculateHash();
     }
 
-    calculateHash(){
-        return SHA256(this.index + this.previousHash + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString()
-    }
+     calculateHash(){
+         return SHA256(this.index + this.previousHash + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();
+     }
 }
 
 class Blockchain {
@@ -20,7 +20,7 @@ class Blockchain {
     }
 
     createGenesisBlock(){
-        return new Bloxk(0, "05/10/2022", "Genesis block", 0)
+        return new Block(0, "05/10/2022", "Genesis block", 0)
     }
 
     getLatesBlock(){
@@ -33,7 +33,7 @@ class Blockchain {
         this.chain.push(newBlock);
     }
 }
-let fesaCoin = Blockchain();
+let fesaCoin = new Blockchain();
 fesaCoin.addBlock(new Block(1, "06/10/2021", {amount:4}));
 fesaCoin.addBlock(new Block(2, "07/10/2021", {amount:4}));
 
