@@ -48,11 +48,13 @@ class Blockchain {
             const previousBlock = this.chain[i - 1];
 
             if(currentBlock.hash !== currentBlock.calculateHash()){
+                console.log("Hash error");
                 return false;
             }
 
             
             if(currentBlock.hash !== previousBlock.hash){
+                console.log("Hash error2");
                 return false;
             }
         }
@@ -62,6 +64,8 @@ class Blockchain {
 }
 let fesaCoin = new Blockchain();
 fesaCoin.addBlock(new Block(1, "06/10/2021", {amount:4}));
-fesaCoin.addBlock(new Block(2, "07/10/2021", {amount:4}));
+fesaCoin.addBlock(new Block(2, "07/10/2021", {amount:10}));
 
-console.log(JSON.stringify(fesaCoin, null, 4))
+console.log('Is blockchain valid?', fesaCoin.isChainValid());
+
+//console.log(JSON.stringify(fesaCoin, null, 4))
