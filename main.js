@@ -7,7 +7,7 @@ class Block {
         this.data = data;
         this.previousHash = previousHash;
         this.hash = this.calculateHash();
-        this.nonce = 0;
+        //this.nonce = 0;
     }
 
      calculateHash(){
@@ -19,6 +19,7 @@ class Block {
             this.nonce ++;
             this.hash = this.calculateHash();
         } 
+        
         console.log("Block mined: " + this.hash);
      }
 }
@@ -53,7 +54,7 @@ class Blockchain {
             }
 
             
-            if(currentBlock.hash !== previousBlock.hash){
+            if(currentBlock.previousHash !== previousBlock.hash){
                 console.log("Hash error2");
                 return false;
             }
